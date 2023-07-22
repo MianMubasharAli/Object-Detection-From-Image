@@ -109,46 +109,49 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //Image with Detections....
+      body: Container(
+        // padding: EdgeInsets.all(50),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //Image with Detections....
 
-          !firststate
-              ? !message ? LoaderState() : Text("Select Image")
-              : Expanded(
-                  child: Container(
-                      child:
-                          _objectModel.renderBoxesOnImage(_image!, objDetect)),
-                ),
+            !firststate
+                ? !message ? LoaderState() : Text("Select Image")
+                : Expanded(
+                    child: Container(
+                        child:
+                            _objectModel.renderBoxesOnImage(_image!, objDetect,)),
+                  ),
 
-          // !firststate
-          //     ? LoaderState()
-          //     : Expanded(
-          //         child: Container(
-          //             height: 150,
-          //             width: 300,
-          //             child: objDetect.isEmpty
-          //                 ? Text("hello")
-          //                 : _objectModel.renderBoxesOnImage(
-          //                     _image!, objDetect)),
-          //       ),
-          Center(
-            child: Visibility(
-              visible: _imagePrediction != null,
-              child: Text("$_imagePrediction"),
+            // !firststate
+            //     ? LoaderState()
+            //     : Expanded(
+            //         child: Container(
+            //             height: 150,
+            //             width: 300,
+            //             child: objDetect.isEmpty
+            //                 ? Text("hello")
+            //                 : _objectModel.renderBoxesOnImage(
+            //                     _image!, objDetect)),
+            //       ),
+            Center(
+              child: Visibility(
+                visible: _imagePrediction != null,
+                child: Text("$_imagePrediction"),
+              ),
             ),
-          ),
-          //Button to click pic
-          // ElevatedButton(
-          //   onPressed: () {
-          //     // runObjectDetection();
-          //   },
-          //   child: const Icon(Icons.camera),
-          // )
-        ],
-      )),
+            //Button to click pic
+            // ElevatedButton(
+            //   onPressed: () {
+            //     // runObjectDetection();
+            //   },
+            //   child: const Icon(Icons.camera),
+            // )
+          ],
+        )),
+      ),
     );
   }
   Future getImageFromCamera() async {
